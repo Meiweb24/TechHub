@@ -14,12 +14,13 @@ import FeatureShowcase from './components/FeatureShowcase'
 import AdminDashboard from './components/AdminDashboard'
 import SatisfactionForm from './components/SatisfactionForm'
 import { AuthProvider, useAuth } from './context/AuthContext'
-import { ProductProvider } from './context/ProductContext'
-import { categories, products } from './data/products'
+import { ProductProvider, useProducts } from './context/ProductContext'
+import { categories } from './data/products'
 import './App.css'
 
 function Storefront() {
   const { isAdmin } = useAuth()
+  const { products, loading: productsLoading } = useProducts()
   const [activeCategory, setActiveCategory] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -262,6 +263,10 @@ function Storefront() {
         />
 
         <section className="products-zone">
+          {productsLoading ? (
+            <p className="container empty-state">Cargando productos desde el backend...</p>
+          ) : null}
+
           <CategoryMenu
             categories={categories}
             activeCategory={activeCategory}

@@ -1,0 +1,13 @@
+{
+  "name": "techhub-workspace",
+  "private": true,
+  "scripts": {
+    "install:all": "npm --prefix FrontEnd install && npm --prefix BackEnd install",
+    "dev": "concurrently \"npm --prefix BackEnd run dev\" \"npm --prefix FrontEnd run dev\"",
+    "dev:front": "npm --prefix FrontEnd run dev",
+    "dev:back": "npm --prefix BackEnd run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

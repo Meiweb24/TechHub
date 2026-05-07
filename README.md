@@ -627,7 +627,7 @@ useAuth() → { isAdmin, setIsAdmin }
 ## 📞 Información del Equipo
 
 **Proyecto Educativo - Programación Web**
-
+https://github.com/Meiweb24/FrontEnd
 **Tech Hub © 2026**
 
 Desarrollado como proyecto de Fase 1 de programación web.
@@ -643,3 +643,69 @@ Proyecto educativo - Uso académico permitido
 **Última actualización**: Abril 26, 2026
 
 
+
+---
+
+## Backend CRUD (Express + Nodemon + MySQL)
+
+Se agrego backend completo en `BackEnd/` para CRUD de productos desde panel admin.
+
+### 1) Configurar base de datos en XAMPP
+
+1. Inicia Apache y MySQL en XAMPP.
+2. Abre phpMyAdmin.
+3. Ejecuta el script:
+
+```sql
+SOURCE BackEnd/sql/init.sql;
+```
+
+Tambien puedes copiar y pegar el contenido de `BackEnd/sql/init.sql`.
+
+### 2) Configurar variables de entorno backend
+
+Crea `BackEnd/.env` basado en `BackEnd/.env.example`:
+
+```env
+PORT=4000
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=un_ust-r
+DB_PASSWORD=una_clave
+DB_NAME=techhub_db
+```
+
+### 3) Configurar variables de entorno frontend
+
+Crea `FrontEnd/.env` basado en `FrontEnd/.env.example`:
+
+```env
+VITE_API_URL=http://localhost:4000/api
+```
+
+### 4) Instalar dependencias y correr ambos proyectos
+
+Desde la raiz del repo:
+
+```bash
+npm install
+npm run install:all
+npm run dev
+```
+
+Esto levanta:
+- Backend: `http://localhost:4000`
+- Frontend (Vite): `http://localhost:5173`
+
+### Endpoints CRUD
+
+- `GET /api/products`
+- `POST /api/products`
+- `PUT /api/products/:id`
+- `DELETE /api/products/:id`
+
+### Notas
+
+- Si el backend esta apagado, el front usa fallback local temporal.
+- El panel admin (`/admin`) ahora permite crear, editar y eliminar productos.
+- Los cambios reales se guardan en MySQL cuando el backend esta activo.

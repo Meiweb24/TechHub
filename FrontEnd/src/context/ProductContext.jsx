@@ -1,38 +1,94 @@
-import { createContext, useContext, useState, useMemo } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { products as initialProducts } from '../data/products'
+import {
+  fetchProducts,
+  createProduct as createProductApi,
+  updateProduct as updateProductApi,
+  deleteProduct as deleteProductApi,
+} from '../services/productsApi'
 
 const ProductContext = createContext(null)
 
 export function ProductProvider({ children }) {
   const [products, setProducts] = useState(initialProducts)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+  const [usingFallback, setUsingFallback] = useState(false)
 
-  const updateProduct = (productId, updates) => {
-    setProducts(prevProducts =>
-      prevProducts.map(product =>
-        product.id === productId ? { ...product, ...updates } : product
-      )
+  useEffect(() => {
+    let mounted = true
+
+    async function loadProducts() {
+      setLoading(true)
+      setError('')
+
+      try {
+        const remoteProducts = await fetchProducts()
+        if (!mounted) {
+          return
+        }
+        setProducts(remoteProducts)
+        setUsingFallback(false)
+      } catch (_loadError) {
+        if (!mounted) {
+          return
+        }
+
+        setProducts(initialProducts)
+        setUsingFallback(true)
+        setError('No se pudo conectar al backend. Se usan datos locales temporales.')
+      } finally {
+        if (mounted) {
+          setLoading(false)
+        }
+      }
+    }
+
+    loadProducts()
+
+    return () => {
+      mounted = false
+    }
+  }, [])
+
+  const updateProduct = async (productId, updates) => {
+    const updated = await updateProductApi(productId, updates)
+    setProducts((prevProducts) =>
+      prevProducts.map((product) => (product.id === productId ? updated : product)),
     )
+
+    return updated
   }
 
-  const toggleFeatured = (productId) => {
-    updateProduct(productId, {
-      featured: !products.find(p => p.id === productId)?.featured,
-    })
+  const toggleFeatured = async (productId) => {
+    const current = products.find((product) => product.id === productId)
+    if (!current) {
+      return null
+    }
+
+    return updateProduct(productId, { featured: !current.featured })
   }
 
-  const updatePrice = (productId, newPrice) => {
-    updateProduct(productId, { price: newPrice })
+  const updatePrice = async (productId, newPrice) => {
+    return updateProduct(productId, { price: newPrice })
   }
 
-  const updateStock = (productId, stock) => {
-    updateProduct(productId, { stock })
+  const createProduct = async (payload) => {
+    const created = await createProductApi(payload)
+    setProducts((prevProducts) => [...prevProducts, created])
+    return created
+  }
+
+  const deleteProduct = async (productId) => {
+    await deleteProductApi(productId)
+    setProducts((prevProducts) => prevProducts.filter((product) => product.id !== productId))
   }
 
   const getProductStats = () => {
     const totalProducts = products.length
-    const avgPrice = products.reduce((sum, p) => sum + p.price, 0) / totalProducts
-    const onSale = products.filter(p => p.originalPrice && p.originalPrice > p.price).length
-    const featured = products.filter(p => p.featured).length
+    const avgPrice = totalProducts > 0 ? products.reduce((sum, p) => sum + p.price, 0) / totalProducts : 0
+    const onSale = products.filter((p) => p.originalPrice && p.originalPrice > p.price).length
+    const featured = products.filter((p) => p.featured).length
 
     return { totalProducts, avgPrice, onSale, featured }
   }
@@ -40,13 +96,17 @@ export function ProductProvider({ children }) {
   const value = useMemo(
     () => ({
       products,
+      loading,
+      error,
+      usingFallback,
+      createProduct,
       updateProduct,
       toggleFeatured,
       updatePrice,
-      updateStock,
+      deleteProduct,
       getProductStats,
     }),
-    [products]
+    [products, loading, error, usingFallback],
   )
 
   return <ProductContext.Provider value={value}>{children}</ProductContext.Provider>

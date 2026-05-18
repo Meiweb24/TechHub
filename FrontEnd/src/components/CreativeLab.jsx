@@ -1,3 +1,7 @@
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\CreativeLab.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
 export default function CreativeLab() {
   const handleCategoryClick = (categoryId) => {
     window.location.href = `/tienda?category=${categoryId}#products`
@@ -80,3 +84,4 @@ export default function CreativeLab() {
     </main>
   )
 }
+

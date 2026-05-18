@@ -1,4 +1,8 @@
-﻿import ProductCard from './ProductCard'
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\ProductGrid.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
+import ProductCard from './ProductCard'
 
 export default function ProductGrid({
   title,
@@ -38,3 +42,4 @@ export default function ProductGrid({
     </section>
   )
 }
+

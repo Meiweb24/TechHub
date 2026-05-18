@@ -1,3 +1,7 @@
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\SatisfactionForm.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
 import { useState } from 'react'
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
@@ -95,3 +99,4 @@ export default function SatisfactionForm() {
     </section>
   )
 }
+

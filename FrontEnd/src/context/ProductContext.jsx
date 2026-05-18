@@ -1,3 +1,7 @@
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\context\ProductContext.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { products as initialProducts } from '../data/products'
 import {
@@ -119,3 +123,4 @@ export function useProducts() {
   }
   return context
 }
+

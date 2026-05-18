@@ -10,10 +10,12 @@
                     "db:init":  "node src/scripts/initDatabase.js"
                 },
     "dependencies":  {
+                         "bcryptjs": "^2.4.3",
                          "cors":  "^2.8.5",
                          "dotenv":  "^16.6.1",
                          "express":  "^5.1.0",
                          "morgan":  "^1.10.1",
+                         "multer": "^1.4.5-lts.1",
                          "mysql2":  "^3.15.3",
                          "sequelize":  "^6.37.8"
                      },

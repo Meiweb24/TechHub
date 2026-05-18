@@ -1,3 +1,7 @@
+﻿/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\Login.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
 import { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
@@ -6,33 +10,86 @@ import Modal from 'react-bootstrap/Modal'
 import { useAuth } from '../context/AuthContext'
 
 export default function Login() {
-  const { isAdmin, login, logout, authError } = useAuth()
+  const { user, isAdmin, login, register, logout, authError, clearError } = useAuth()
+  const [mode, setMode] = useState('login')
   const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [showModal, setShowModal] = useState(false)
   const [robotChecked, setRobotChecked] = useState(false)
+  const [infoMessage, setInfoMessage] = useState('')
 
+  // Cierra el modal y limpia estados secundarios.
   const closeModal = () => {
     setShowModal(false)
     setRobotChecked(false)
+    clearError()
+    setInfoMessage('')
   }
 
-  const handleSubmit = (event) => {
+  // Procesa el envio del formulario de login o registro.
+  const handleSubmit = async (event) => {
     event.preventDefault()
 
     if (!robotChecked) {
       return
     }
 
-    const success = login(username, password)
+    const cleanedUsername = username.trim().toLowerCase()
+    const cleanedEmail = email.trim().toLowerCase()
 
-    if (success) {
+    const result =
+      mode === 'register'
+        ? await register(cleanedUsername, cleanedEmail, password)
+        : await login(cleanedUsername, password)
+
+    if (result) {
+      const role = result.role || 'user'
+      const userLabel = result.username || cleanedUsername
+
+      if (mode === 'register') {
+        setInfoMessage(`Registro correcto. Usuario ${userLabel} creado como ${role}.`)
+      } else if (role === 'admin') {
+        setInfoMessage('Ingreso correcto. Redirigiendo al panel de administrador...')
+      } else {
+        setInfoMessage(`Bienvenido ${userLabel}. Eres usuario registrado.`)
+      }
+
       setUsername('')
+      setEmail('')
       setPassword('')
       setShowPassword(false)
       closeModal()
+      setMode('login')
+
+      if (result.role === 'admin') {
+        window.history.pushState({}, '', '/admin')
+        window.dispatchEvent(new PopStateEvent('popstate'))
+      }
+    } else {
+      setInfoMessage('')
     }
+  }
+
+  if (user && !isAdmin) {
+    return (
+      <section className="section section--compact" id="admin">
+        <div className="container">
+          <div className="login-card login-card--active">
+            <div>
+              <h2>Usuario registrado activo</h2>
+              <p>Has iniciado sesion como {user.username}. Puedes cerrar sesion cuando quieras.</p>
+            </div>
+            <div className="login-card__actions">
+              <button type="button" className="btn btn--secondary" onClick={logout}>
+                Cerrar sesion
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    )
   }
 
   if (isAdmin) {
@@ -63,21 +120,22 @@ export default function Login() {
       <div className="container">
         <div className="login-card">
           <div>
-            <h2>Ingreso admin con modal</h2>
-            <p>Demo de autenticacion para rutas privadas con verificacion local.</p>
+            <h2>{mode === 'register' ? 'Registro de usuario' : 'Invitado'}</h2>
+            <p>Invitado. Inicia sesion o registrate para acceder a tu cuenta y funciones del sitio.</p>
           </div>
           <div className="login-card__actions">
             <button type="button" className="btn btn--primary" onClick={() => setShowModal(true)}>
-              Abrir login
+              {mode === 'register' ? 'Abrir registro' : 'Abrir sesion'}
             </button>
           </div>
+          {infoMessage ? <p className="login-success">{infoMessage}</p> : null}
           {authError ? <p className="login-error">{authError}</p> : null}
         </div>
       </div>
 
       <Modal centered show={showModal} onHide={closeModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Login privado</Modal.Title>
+          <Modal.Title>{mode === 'register' ? 'Registro' : 'Iniciar sesion'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
@@ -93,15 +151,29 @@ export default function Login() {
               />
             </Form.Group>
 
+            {mode === 'register' ? (
+              <Form.Group className="mb-3" controlId="adminEmail">
+                <Form.Label>Correo electronico</Form.Label>
+                <Form.Control
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  placeholder="Ingresa tu correo"
+                  autoComplete="email"
+                  required
+                />
+              </Form.Group>
+            ) : null}
+
             <Form.Group className="mb-3" controlId="adminPass">
-              <Form.Label>Contrasena</Form.Label>
+              <Form.Label>{mode === 'register' ? 'Contrasena' : 'Contrasena'}</Form.Label>
               <InputGroup>
                 <Form.Control
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
-                  placeholder="Ingresa tu contrasena"
-                  autoComplete="current-password"
+                  placeholder={mode === 'register' ? 'Crea una contrasena' : 'Ingresa tu contrasena'}
+                  autoComplete={mode === 'register' ? 'new-password' : 'current-password'}
                   required
                 />
                 <Button
@@ -124,11 +196,27 @@ export default function Login() {
             </Form.Group>
 
             <Button variant="dark" type="submit" disabled={!robotChecked}>
-              Verificar ingreso
+              {mode === 'register' ? 'Crear cuenta' : 'Verificar ingreso'}
             </Button>
           </Form>
+
+          <div className="mt-3">
+            <button
+              type="button"
+              className="btn btn--secondary"
+              onClick={() => {
+                setMode(mode === 'login' ? 'register' : 'login')
+                setInfoMessage('')
+                clearError()
+              }}
+            >
+              {mode === 'login' ? 'No tienes cuenta? registrate' : 'Ya tengo cuenta'}
+            </button>
+          </div>
         </Modal.Body>
       </Modal>
     </section>
   )
 }
+
+

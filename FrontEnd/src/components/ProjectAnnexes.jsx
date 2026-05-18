@@ -1,3 +1,7 @@
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\ProjectAnnexes.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
 export default function ProjectAnnexes() {
   return (
     <section className="section section--compact annexes" id="anexos">
@@ -24,3 +28,4 @@ export default function ProjectAnnexes() {
     </section>
   )
 }
+

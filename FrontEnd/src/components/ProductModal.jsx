@@ -1,4 +1,8 @@
-﻿import { formatCOP } from '../utils/currency'
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\ProductModal.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
+import { formatCOP } from '../utils/currency'
 
 function buildSpecs(product) {
   const base = [
@@ -50,7 +54,7 @@ export default function ProductModal({ product, onClose, onAddToCart }) {
       <button className="product-modal__backdrop" type="button" onClick={onClose} aria-label="Cerrar" />
       <article className="product-modal__card">
         <button className="product-modal__close" type="button" onClick={onClose} aria-label="Cerrar modal">
-          ×
+          �
         </button>
         <div className="product-modal__grid">
           <div className="product-modal__media">
@@ -88,3 +92,4 @@ export default function ProductModal({ product, onClose, onAddToCart }) {
     </div>
   )
 }
+

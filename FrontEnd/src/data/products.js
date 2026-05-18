@@ -1,4 +1,8 @@
-﻿export const categories = [
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\data\products.js
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
+export const categories = [
   { id: 'all', label: 'All' },
   { id: 'keyboards', label: 'Teclados' },
   { id: 'mice', label: 'Mouse' },
@@ -347,4 +351,5 @@ export const products = [
     dealTag: 'Precio estable',
   },
 ]
+
 

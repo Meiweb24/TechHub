@@ -1,5 +1,10 @@
-﻿import { useAuth } from '../context/AuthContext'
+﻿/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\Navbar.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
+import { useAuth } from '../context/AuthContext'
 
+// Iconos simples SVG usados en la barra de navegaciÃ³n.
 function IconoBusqueda() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -28,8 +33,13 @@ export default function Navbar({
   onCartToggle,
   cartOpen,
 }) {
-  const { isAdmin } = useAuth()
+  const { user, isAdmin, logout } = useAuth()
+
+  // Etiqueta de categorÃ­a activa para el menÃº desplegable.
   const activeCategoryLabel = categories.find((item) => item.id === activeCategory)?.label ?? 'Todo'
+
+  // Estado visible del usuario en el navbar.
+  const userStatus = user ? `Usuario: ${user.username}` : 'Usuario registrado'
 
   return (
     <header className="navbar" id="home">
@@ -101,9 +111,17 @@ export default function Navbar({
             <span className="cart-count">{cartCount}</span>
           </button>
 
-          <a href={isAdmin ? '/admin' : '#admin'} className="user-button">
-            {isAdmin ? 'Panel privado' : 'Ingresar'}
-          </a>
+          <div className="user-status">{userStatus}</div>
+
+          {user ? (
+            <button type="button" className="user-button user-button--logout" onClick={logout}>
+              Cerrar sesion
+            </button>
+          ) : (
+            <a href={isAdmin ? '/admin' : '#admin'} className="user-button">
+              Ingresar
+            </a>
+          )}
 
           <button
             type="button"
@@ -125,6 +143,7 @@ export default function Navbar({
         aria-hidden={!mobileOpen}
       >
         <nav className="mobile-drawer__content" aria-label="Navegacion movil">
+          <div className="mobile-drawer__status">{userStatus}</div>
           <a href="/" onClick={() => setMobileOpen(false)}>
             Home
           </a>
@@ -137,6 +156,22 @@ export default function Navbar({
           <a href="#contact" onClick={() => setMobileOpen(false)}>
             Contacto
           </a>
+          {user ? (
+            <button
+              type="button"
+              className="mobile-logout"
+              onClick={() => {
+                logout()
+                setMobileOpen(false)
+              }}
+            >
+              Cerrar sesion
+            </button>
+          ) : (
+            <a href="#admin" onClick={() => setMobileOpen(false)}>
+              Ingresar
+            </a>
+          )}
           {isAdmin ? (
             <a href="/admin" onClick={() => setMobileOpen(false)}>
               Panel Admin
@@ -162,3 +197,4 @@ export default function Navbar({
     </header>
   )
 }
+

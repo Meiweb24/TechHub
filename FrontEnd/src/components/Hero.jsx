@@ -1,4 +1,8 @@
-﻿export default function Hero() {
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\Hero.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
+export default function Hero() {
   return (
     <section className="hero" aria-label="Promocion destacada">
       <div className="container hero__grid">
@@ -25,3 +29,4 @@
     </section>
   )
 }
+

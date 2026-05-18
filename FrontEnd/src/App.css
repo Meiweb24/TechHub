@@ -1326,18 +1326,46 @@
 }
 
 @media (max-width: 900px) {
+  .navbar .container {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: var(--space-2);
+  }
+
   .container {
     width: min(var(--container-max), calc(100% - var(--space-4)));
   }
 
   .desktop-nav,
-  .search,
-  .user-button {
+  .search {
     display: none;
+  }
+
+  .user-button {
+    display: inline-flex;
+    order: 1;
+  }
+
+  .user-status {
+    order: 2;
+    white-space: nowrap;
+  }
+
+  .icon-button {
+    order: 3;
   }
 
   .menu-button {
     display: inline-flex;
+    order: 4;
+  }
+
+  .navbar-tools {
+    width: 100%;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .hero__main,

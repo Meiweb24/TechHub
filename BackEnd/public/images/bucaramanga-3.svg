@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#2b3e72" />
+  <path d="M100 500 Q250 350 400 500 T700 500" fill="#d8eefe" stroke="#a6c8ff" stroke-width="12" />
+  <text x="50%" y="48%" text-anchor="middle" fill="#ffe066" font-size="42" font-family="Arial, sans-serif">Ciudad en el valle</text>
+</svg>

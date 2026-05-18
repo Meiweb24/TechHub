@@ -1,4 +1,8 @@
-﻿import { useEffect, useState } from 'react'
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\App.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
+import { useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import CategoryMenu from './components/CategoryMenu'
@@ -354,6 +358,8 @@ function AppRouter() {
 
   useEffect(() => {
     if (path === '/admin' && !isAdmin) {
+      // Si un visitante no admin intenta entrar en /admin, lo redirigimos
+      // a la tienda y le mostramos un mensaje claro de acceso denegado.
       window.history.replaceState({}, '', '/tienda?auth=required#admin')
       setPath('/tienda')
 
@@ -425,3 +431,4 @@ export default function App() {
     </AuthProvider>
   )
 }
+

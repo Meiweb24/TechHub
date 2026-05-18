@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#0d2640" />
+  <text x="50%" y="45%" text-anchor="middle" fill="#f7c948" font-size="48" font-family="Arial, sans-serif">Bucaramanga</text>
+  <text x="50%" y="55%" text-anchor="middle" fill="#ffffff" font-size="24" font-family="Arial, sans-serif">Panoramica urbana</text>
+</svg>

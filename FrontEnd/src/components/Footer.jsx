@@ -1,3 +1,7 @@
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\Footer.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
 import { useState } from 'react'
 
 const teamMembers = [
@@ -100,3 +104,4 @@ export default function Footer() {
     </footer>
   )
 }
+

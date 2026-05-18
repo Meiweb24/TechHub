@@ -1,3 +1,7 @@
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\FeatureShowcase.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
 import { useState } from 'react'
 import Accordion from 'react-bootstrap/Accordion'
 import Button from 'react-bootstrap/Button'
@@ -131,3 +135,4 @@ export default function FeatureShowcase({ products }) {
     </section>
   )
 }
+

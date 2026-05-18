@@ -1,4 +1,8 @@
-﻿import { formatCOP } from '../utils/currency'
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\CartDrawer.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
+import { formatCOP } from '../utils/currency'
 
 export default function CartDrawer({
   open,
@@ -21,7 +25,7 @@ export default function CartDrawer({
         <header className="cart-drawer__header">
           <h2>Tu carrito</h2>
           <button type="button" className="cart-drawer__close" onClick={onClose} aria-label="Cerrar carrito">
-            ✕
+            ?
           </button>
         </header>
 
@@ -91,3 +95,4 @@ export default function CartDrawer({
     </>
   )
 }
+

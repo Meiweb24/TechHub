@@ -1,4 +1,8 @@
-﻿import { formatCOP } from '../utils/currency'
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\DealsSection.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
+import { formatCOP } from '../utils/currency'
 
 export default function DealsSection({ products, onAddToCart, onCategoryChange }) {
   const topDeals = [...products]
@@ -30,7 +34,7 @@ export default function DealsSection({ products, onAddToCart, onCategoryChange }
                 <p className="deal-card__tag">{item.dealTag}</p>
                 <h3>{item.name}</h3>
                 <p className="deal-card__meta">
-                  {item.categoryLabel} • Ahorra {discount}%
+                  {item.categoryLabel} � Ahorra {discount}%
                 </p>
                 <div className="deal-card__price">
                   <strong>{formatCOP(item.price)}</strong>
@@ -56,3 +60,4 @@ export default function DealsSection({ products, onAddToCart, onCategoryChange }
     </section>
   )
 }
+

@@ -1,3 +1,7 @@
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\AdminStats.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
 import { useProducts } from '../context/ProductContext'
 import '../styles/AdminStats.css'
 
@@ -52,3 +56,4 @@ export default function AdminStats() {
     </div>
   )
 }
+

@@ -44,8 +44,16 @@ function validateProductPayload(payload, { partial = false } = {}) {
 
 export async function listProducts(_req, res, next) {
   try {
+    const searchTerm = String(_req.query?.q || '').trim().toLowerCase()
     const rows = await Product.findAll({ order: [['id', 'ASC']] })
-    res.json(rows)
+    const filteredRows = searchTerm
+      ? rows.filter((item) =>
+          [item.name, item.category, item.categoryLabel, item.tagline, item.dealTag]
+            .filter(Boolean)
+            .some((value) => String(value).toLowerCase().includes(searchTerm)),
+        )
+      : rows
+    res.json(filteredRows)
   } catch (error) {
     next(error)
   }

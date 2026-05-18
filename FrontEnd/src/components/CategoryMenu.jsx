@@ -1,4 +1,8 @@
-﻿export default function CategoryMenu({
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\CategoryMenu.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
+export default function CategoryMenu({
   categories,
   activeCategory,
   onCategoryChange,
@@ -67,3 +71,4 @@
     </section>
   )
 }
+

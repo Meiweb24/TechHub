@@ -1,4 +1,8 @@
-﻿export default function AdminBanner() {
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\AdminBanner.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
+export default function AdminBanner() {
   return (
     <section className="admin-banner" aria-label="Ofertas para admin">
       <div className="container admin-banner__inner">
@@ -11,3 +15,4 @@
     </section>
   )
 }
+

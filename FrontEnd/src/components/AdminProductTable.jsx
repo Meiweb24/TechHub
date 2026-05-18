@@ -1,3 +1,7 @@
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\AdminProductTable.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
 import { useState } from 'react'
 import { useProducts } from '../context/ProductContext'
 import '../styles/AdminProductTable.css'
@@ -355,3 +359,4 @@ export default function AdminProductTable() {
     </div>
   )
 }
+

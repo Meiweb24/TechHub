@@ -1,5 +1,5 @@
 /**
- * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\services\productsApi.js
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\services\usersApi.js
  * Proposito: Implementa parte de la logica y flujo principal de TechHub.
  */
 import axios from 'axios'
@@ -18,36 +18,36 @@ function toApiError(error) {
   return new Error(message)
 }
 
-export async function fetchProducts() {
+export async function listUsers() {
   try {
-    const { data } = await api.get('/products')
+    const { data } = await api.get('/users')
     return data
   } catch (error) {
     throw toApiError(error)
   }
 }
 
-export async function createProduct(payload) {
+export async function createUser(payload) {
   try {
-    const { data } = await api.post('/products', payload)
+    const { data } = await api.post('/users', payload)
     return data
   } catch (error) {
     throw toApiError(error)
   }
 }
 
-export async function updateProduct(productId, payload) {
+export async function updateUser(userId, payload) {
   try {
-    const { data } = await api.put(`/products/${productId}`, payload)
+    const { data } = await api.put(`/users/${userId}`, payload)
     return data
   } catch (error) {
     throw toApiError(error)
   }
 }
 
-export async function deleteProduct(productId) {
+export async function deleteUser(userId) {
   try {
-    await api.delete(`/products/${productId}`)
+    await api.delete(`/users/${userId}`)
     return null
   } catch (error) {
     throw toApiError(error)

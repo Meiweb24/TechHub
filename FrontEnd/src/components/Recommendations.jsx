@@ -1,4 +1,8 @@
-﻿import { formatCOP } from '../utils/currency'
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\Recommendations.jsx
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
+import { formatCOP } from '../utils/currency'
 
 export default function Recommendations({ products, onAddToCart, onOpenProduct, onCategoryChange }) {
   return (
@@ -57,3 +61,4 @@ export default function Recommendations({ products, onAddToCart, onOpenProduct, 
     </section>
   )
 }
+

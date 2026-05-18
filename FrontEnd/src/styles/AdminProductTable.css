@@ -81,39 +81,57 @@ table select {
   overflow-x: auto;
 }
 
+.admin-section {
+  margin: 2rem 0;
+  padding: 1.75rem;
+  border-radius: 18px;
+  background: #080808;
+  border: 1px solid #222;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.95rem;
+  background: #090909;
 }
 
 table thead {
-  background-color: var(--bg-tertiary, #1a1a1a);
-  border-bottom: 2px solid var(--primary-color, #ffd27f);
+  background-color: #121212;
+  border-bottom: 1px solid #444;
 }
 
 table th {
   padding: 1rem;
   text-align: left;
   font-weight: 600;
-  color: var(--text-primary, #f4f4f4);
+  color: #f4f4f4;
   text-transform: uppercase;
   font-size: 0.85rem;
   letter-spacing: 0.5px;
 }
 
 table tbody tr {
-  border-bottom: 1px solid var(--border-color, #2a2a2a);
+  border-bottom: 1px solid #222;
   transition: background-color 0.2s ease;
 }
 
 table tbody tr:hover {
-  background-color: var(--bg-tertiary, #1a1a1a);
+  background-color: #181818;
 }
 
 table td {
   padding: 1rem;
-  color: var(--text-secondary, #d3d3d3);
+  color: #d3d3d3;
+}
+
+table a {
+  color: #ffd27f;
+  text-decoration: none;
+}
+
+table a:hover {
+  text-decoration: underline;
 }
 
 .product-name {

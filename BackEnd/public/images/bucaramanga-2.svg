@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#144d2b" />
+  <circle cx="400" cy="300" r="180" fill="#52b788" opacity="0.8" />
+  <text x="50%" y="50%" text-anchor="middle" fill="#ffffff" font-size="42" font-family="Arial, sans-serif">Parque y montaña</text>
+</svg>

@@ -1,4 +1,8 @@
-﻿export const hashPassword = (value) => {
+/**
+ * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\utils\auth.js
+ * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ */
+export const hashPassword = (value) => {
   const input = String(value)
   let hash = 0x811c9dc5
 
@@ -14,4 +18,5 @@ export const ADMIN_CREDENTIALS = {
   username: 'admin',
   passwordHash: 'fdc422fd',
 }
+
 

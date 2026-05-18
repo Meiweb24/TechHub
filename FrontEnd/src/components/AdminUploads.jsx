@@ -89,7 +89,7 @@ export default function AdminUploads() {
               <tr>
                 <th>Archivo</th>
                 <th>Tipo</th>
-                <th>Tamaño</th>
+                <th>Tamano</th>
                 <th>Enlace</th>
                 <th>Acciones</th>
               </tr>

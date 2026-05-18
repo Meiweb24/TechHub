@@ -48,7 +48,7 @@ export default function AdminUserTable() {
     resetMessages()
 
     if (!newUser.username || !newUser.email || !newUser.password) {
-      setError('Completa usuario, correo y contraseña.')
+      setError('Completa usuario, correo y Contrasena.')
       return
     }
 
@@ -124,7 +124,7 @@ export default function AdminUserTable() {
           />
           <input
             type="password"
-            placeholder="Contraseña"
+            placeholder="Contrasena"
             value={newUser.password}
             onChange={(event) => setNewUser((prev) => ({ ...prev, password: event.target.value }))}
           />

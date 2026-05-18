@@ -39,7 +39,7 @@ export default function Navbar({
   const activeCategoryLabel = categories.find((item) => item.id === activeCategory)?.label ?? 'Todo'
 
   // Estado visible del usuario en el navbar.
-  const userStatus = user ? `Usuario: ${user.username}` : 'Usuario registrado'
+  const userStatus = user ? `Usuario: ${user.username}` : 'Invitado'
 
   return (
     <header className="navbar" id="home">

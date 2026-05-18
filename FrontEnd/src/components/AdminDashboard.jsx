@@ -16,8 +16,8 @@ export default function AdminDashboard() {
       <section className="section">
         <div className="container">
           <div className="section-heading">
-            <h1>Panel de administraciÃ³n</h1>
-            <p>Gestiona productos, usuarios, archivos y visualiza analÃ­tica del inventario.</p>
+            <h1>Panel de administracion</h1>
+            <p>Gestiona productos, usuarios, archivos y visualiza analitica del inventario.</p>
           </div>
 
           <AdminStats />
@@ -33,7 +33,7 @@ export default function AdminDashboard() {
               Volver a tienda
             </a>
             <button type="button" className="btn btn--primary" onClick={logout}>
-              Cerrar sesiÃ³n
+              Cerrar sesion
             </button>
           </div>
         </div>

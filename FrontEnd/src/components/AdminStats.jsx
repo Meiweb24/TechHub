@@ -19,7 +19,7 @@ export default function AdminStats() {
 
   return (
     <div className="admin-stats">
-      <h2>Analítica del inventario</h2>
+      <h2>Analitica del inventario</h2>
       <div className="stats-grid">
         <div className="stat-card">
           <div className="stat-icon">📦</div>

@@ -12,6 +12,7 @@ const EMPTY_USER = {
   role: 'user',
 }
 
+// AdminUserTable: coordina este flujo principal del modulo.
 export default function AdminUserTable() {
   const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)

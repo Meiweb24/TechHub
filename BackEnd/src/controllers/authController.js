@@ -1,3 +1,7 @@
+/**
+ * Archivo: BackEnd/src\controllers\authController.js
+ * Proposito: Define la logica principal de authController dentro de TechHub.
+ */
 import bcrypt from 'bcryptjs'
 import { User } from '../models/User.js'
 
@@ -34,6 +38,7 @@ export async function login(req, res, next) {
   }
 }
 
+// register: coordina este flujo principal del modulo.
 export async function register(req, res, next) {
   try {
     const username = String(req.body.username || '').trim().toLowerCase()
@@ -71,3 +76,4 @@ export async function register(req, res, next) {
     next(error)
   }
 }
+

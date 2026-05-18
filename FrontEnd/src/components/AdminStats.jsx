@@ -5,6 +5,7 @@
 import { useProducts } from '../context/ProductContext'
 import '../styles/AdminStats.css'
 
+// AdminStats: coordina este flujo principal del modulo.
 export default function AdminStats() {
   const { getProductStats } = useProducts()
   const stats = getProductStats()

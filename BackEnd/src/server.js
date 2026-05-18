@@ -1,3 +1,7 @@
+/**
+ * Archivo: BackEnd/src\server.js
+ * Proposito: Define la logica principal de server dentro de TechHub.
+ */
 import dotenv from 'dotenv'
 import bcrypt from 'bcryptjs'
 import app from './app.js'
@@ -11,6 +15,7 @@ dotenv.config()
 
 const port = Number(process.env.PORT ?? 4000)
 
+// ensureBaseUsers: coordina este flujo principal del modulo.
 async function ensureBaseUsers() {
   const baseUsers = [
     { username: 'admin', email: 'admin@gmail.com', password: '1234', role: 'admin' },
@@ -50,6 +55,7 @@ async function ensureBaseUsers() {
   }
 }
 
+// ensureBaseProducts: coordina este flujo principal del modulo.
 async function ensureBaseProducts() {
   for (const seedProduct of seedProducts) {
     const [product, created] = await Product.findOrCreate({
@@ -77,6 +83,7 @@ async function ensureBaseProducts() {
   console.log(`Registros base de productos verificados: ${seedProducts.length}`)
 }
 
+// start: coordina este flujo principal del modulo.
 async function start() {
   try {
     await verifyDatabaseConnection()
@@ -94,3 +101,4 @@ async function start() {
 }
 
 start()
+

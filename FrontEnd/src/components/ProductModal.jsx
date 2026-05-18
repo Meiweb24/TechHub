@@ -42,6 +42,7 @@ function buildSpecs(product) {
   return base
 }
 
+// ProductModal: coordina este flujo principal del modulo.
 export default function ProductModal({ product, onClose, onAddToCart }) {
   if (!product) {
     return null

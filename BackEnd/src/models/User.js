@@ -1,3 +1,7 @@
+/**
+ * Archivo: BackEnd/src\models\User.js
+ * Proposito: Define la logica principal de User dentro de TechHub.
+ */
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../config/db.js'
 
@@ -36,3 +40,4 @@ export const User = sequelize.define(
     tableName: 'users',
   },
 )
+

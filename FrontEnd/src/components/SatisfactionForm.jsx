@@ -7,6 +7,7 @@ import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 
+// SatisfactionForm: coordina este flujo principal del modulo.
 export default function SatisfactionForm() {
   const [sent, setSent] = useState(false)
   const [form, setForm] = useState({

@@ -1,4 +1,8 @@
-﻿import dotenv from 'dotenv'
+/**
+ * Archivo: BackEnd/src\scripts\add20Products.js
+ * Proposito: Define la logica principal de add20Products dentro de TechHub.
+ */
+import dotenv from 'dotenv'
 import { sequelize } from '../config/db.js'
 import { Product } from '../models/Product.js'
 
@@ -247,6 +251,7 @@ const newProducts = [
   },
 ]
 
+// run: coordina este flujo principal del modulo.
 async function run() {
   try {
     await sequelize.authenticate()
@@ -261,3 +266,4 @@ async function run() {
 }
 
 run()
+

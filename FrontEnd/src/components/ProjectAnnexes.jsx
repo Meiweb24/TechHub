@@ -1,6 +1,6 @@
 /**
  * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\ProjectAnnexes.jsx
- * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ * Proposito: Muestra anexos informativos del proyecto para documentacion academica.
  */
 export default function ProjectAnnexes() {
   return (

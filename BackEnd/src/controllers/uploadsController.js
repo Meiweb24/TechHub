@@ -1,3 +1,7 @@
+/**
+ * Archivo: BackEnd/src\controllers\uploadsController.js
+ * Proposito: Define la logica principal de uploadsController dentro de TechHub.
+ */
 import fs from 'fs/promises'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -7,6 +11,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const uploadsDirectory = path.resolve(__dirname, '../public/uploads')
 
+// listUploads: coordina este flujo principal del modulo.
 export async function listUploads(_req, res, next) {
   try {
     const uploads = await Upload.findAll({ order: [['createdAt', 'DESC']] })
@@ -16,6 +21,7 @@ export async function listUploads(_req, res, next) {
   }
 }
 
+// updateUpload: coordina este flujo principal del modulo.
 export async function updateUpload(req, res, next) {
   try {
     const uploadId = Number(req.params.id)
@@ -40,6 +46,7 @@ export async function updateUpload(req, res, next) {
   }
 }
 
+// uploadFile: coordina este flujo principal del modulo.
 export async function uploadFile(req, res, next) {
   try {
     const file = req.file
@@ -63,6 +70,7 @@ export async function uploadFile(req, res, next) {
   }
 }
 
+// deleteUpload: coordina este flujo principal del modulo.
 export async function deleteUpload(req, res, next) {
   try {
     const uploadId = Number(req.params.id)
@@ -83,3 +91,4 @@ export async function deleteUpload(req, res, next) {
     next(error)
   }
 }
+

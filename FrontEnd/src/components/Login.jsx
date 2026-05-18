@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\Login.jsx
  * Proposito: Implementa parte de la logica y flujo principal de TechHub.
  */
@@ -9,6 +9,7 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import Modal from 'react-bootstrap/Modal'
 import { useAuth } from '../context/AuthContext'
 
+// Login: coordina este flujo principal del modulo.
 export default function Login() {
   const { user, isAdmin, login, register, logout, authError, clearError } = useAuth()
   const [mode, setMode] = useState('login')

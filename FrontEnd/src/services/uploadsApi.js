@@ -15,6 +15,7 @@ function toApiError(error) {
   return new Error(message)
 }
 
+// listUploads: coordina este flujo principal del modulo.
 export async function listUploads() {
   try {
     const { data } = await api.get('/uploads')
@@ -24,6 +25,7 @@ export async function listUploads() {
   }
 }
 
+// uploadFile: coordina este flujo principal del modulo.
 export async function uploadFile(file) {
   const formData = new FormData()
   formData.append('file', file)
@@ -40,6 +42,7 @@ export async function uploadFile(file) {
   }
 }
 
+// deleteUpload: coordina este flujo principal del modulo.
 export async function deleteUpload(uploadId) {
   try {
     await api.delete(`/uploads/${uploadId}`)

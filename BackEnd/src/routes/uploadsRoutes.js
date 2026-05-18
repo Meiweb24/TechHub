@@ -1,3 +1,7 @@
+/**
+ * Archivo: BackEnd/src\routes\uploadsRoutes.js
+ * Proposito: Define la logica principal de uploadsRoutes dentro de TechHub.
+ */
 import { Router } from 'express'
 import fs from 'fs'
 import multer from 'multer'
@@ -31,3 +35,4 @@ router.put('/:id', updateUpload)
 router.delete('/:id', deleteUpload)
 
 export default router
+

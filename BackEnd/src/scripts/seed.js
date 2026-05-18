@@ -1,3 +1,7 @@
+/**
+ * Archivo: BackEnd/src\scripts\seed.js
+ * Proposito: Define la logica principal de seed dentro de TechHub.
+ */
 import dotenv from 'dotenv'
 import bcrypt from 'bcryptjs'
 import { sequelize } from '../config/db.js'
@@ -8,6 +12,7 @@ import { products } from '../data/seedData.js'
 
 dotenv.config()
 
+// run: coordina este flujo principal del modulo.
 async function run() {
   try {
     await sequelize.authenticate()
@@ -52,3 +57,4 @@ async function run() {
 }
 
 run()
+

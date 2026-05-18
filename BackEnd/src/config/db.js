@@ -1,3 +1,7 @@
+/**
+ * Archivo: BackEnd/src\config\db.js
+ * Proposito: Define la logica principal de db dentro de TechHub.
+ */
 import { Sequelize } from 'sequelize'
 import dotenv from 'dotenv'
 
@@ -21,6 +25,8 @@ export const sequelize = new Sequelize(
   },
 )
 
+// verifyDatabaseConnection: coordina este flujo principal del modulo.
 export async function verifyDatabaseConnection() {
   await sequelize.authenticate()
 }
+

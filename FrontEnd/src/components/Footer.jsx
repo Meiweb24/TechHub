@@ -39,6 +39,7 @@ const teamMembers = [
   },
 ]
 
+// Footer: coordina este flujo principal del modulo.
 export default function Footer() {
   const [activeMember, setActiveMember] = useState(teamMembers[0])
 

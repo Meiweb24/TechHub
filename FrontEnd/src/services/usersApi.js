@@ -18,6 +18,7 @@ function toApiError(error) {
   return new Error(message)
 }
 
+// listUsers: coordina este flujo principal del modulo.
 export async function listUsers() {
   try {
     const { data } = await api.get('/users')
@@ -27,6 +28,7 @@ export async function listUsers() {
   }
 }
 
+// createUser: coordina este flujo principal del modulo.
 export async function createUser(payload) {
   try {
     const { data } = await api.post('/users', payload)
@@ -36,6 +38,7 @@ export async function createUser(payload) {
   }
 }
 
+// updateUser: coordina este flujo principal del modulo.
 export async function updateUser(userId, payload) {
   try {
     const { data } = await api.put(`/users/${userId}`, payload)
@@ -45,6 +48,7 @@ export async function updateUser(userId, payload) {
   }
 }
 
+// deleteUser: coordina este flujo principal del modulo.
 export async function deleteUser(userId) {
   try {
     await api.delete(`/users/${userId}`)

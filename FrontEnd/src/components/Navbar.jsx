@@ -1,10 +1,10 @@
-﻿/**
+/**
  * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\Navbar.jsx
- * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ * Proposito: Barra de navegacion principal con buscador, categorias, carrito y estado de sesion.
  */
 import { useAuth } from '../context/AuthContext'
 
-// Iconos simples SVG usados en la barra de navegaciÃ³n.
+// Icono de busqueda inline para evitar dependencias externas.
 function IconoBusqueda() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -13,6 +13,7 @@ function IconoBusqueda() {
   )
 }
 
+// Icono de carrito inline con contador de items.
 function IconoCarrito() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -21,6 +22,7 @@ function IconoCarrito() {
   )
 }
 
+// Componente controlado: recibe filtros y estado de UI desde App.
 export default function Navbar({
   categories,
   activeCategory,
@@ -35,10 +37,10 @@ export default function Navbar({
 }) {
   const { user, isAdmin, logout } = useAuth()
 
-  // Etiqueta de categorÃ­a activa para el menÃº desplegable.
+  // Etiqueta visible de la categoria actualmente seleccionada.
   const activeCategoryLabel = categories.find((item) => item.id === activeCategory)?.label ?? 'Todo'
 
-  // Estado visible del usuario en el navbar.
+  // Mensaje corto para indicar si hay sesion activa.
   const userStatus = user ? `Usuario: ${user.username}` : 'Invitado'
 
   return (
@@ -197,4 +199,3 @@ export default function Navbar({
     </header>
   )
 }
-

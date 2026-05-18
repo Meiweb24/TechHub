@@ -4,6 +4,7 @@
  */
 import ProductCard from './ProductCard'
 
+// ProductGrid: coordina este flujo principal del modulo.
 export default function ProductGrid({
   title,
   description,

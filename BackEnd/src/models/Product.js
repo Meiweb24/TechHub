@@ -1,3 +1,7 @@
+/**
+ * Archivo: BackEnd/src\models\Product.js
+ * Proposito: Define la logica principal de Product dentro de TechHub.
+ */
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../config/db.js'
 
@@ -56,3 +60,4 @@ export const Product = sequelize.define(
     tableName: 'products',
   },
 )
+

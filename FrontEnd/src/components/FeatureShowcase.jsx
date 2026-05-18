@@ -10,6 +10,7 @@ import Collapse from 'react-bootstrap/Collapse'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Popover from 'react-bootstrap/Popover'
 
+// FeatureShowcase: coordina este flujo principal del modulo.
 export default function FeatureShowcase({ products }) {
   const [openTips, setOpenTips] = useState(false)
   const slides = products.slice(0, 3)

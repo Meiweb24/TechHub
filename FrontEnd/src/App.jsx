@@ -422,6 +422,7 @@ function AppRouter() {
   return <CreativeLab />
 }
 
+// App: coordina este flujo principal del modulo.
 export default function App() {
   return (
     <AuthProvider>

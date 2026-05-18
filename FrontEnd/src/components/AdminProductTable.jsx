@@ -27,6 +27,7 @@ const EMPTY_FORM = {
   adminOnly: false,
 }
 
+// AdminProductTable: coordina este flujo principal del modulo.
 export default function AdminProductTable() {
   const { products, loading, error, usingFallback, createProduct, updateProduct, deleteProduct } = useProducts()
 

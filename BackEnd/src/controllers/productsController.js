@@ -1,5 +1,10 @@
+/**
+ * Archivo: BackEnd/src\controllers\productsController.js
+ * Proposito: Implementa el CRUD de productos y valida reglas de negocio antes de persistir.
+ */
 import { Product } from '../models/Product.js'
 
+// Normaliza distintos formatos de entrada (boolean/string/number) a booleano real.
 function normalizeBoolean(value) {
   if (typeof value === 'boolean') {
     return value
@@ -16,6 +21,7 @@ function normalizeBoolean(value) {
   return false
 }
 
+// Valida payload en modo creacion o actualizacion parcial.
 function validateProductPayload(payload, { partial = false } = {}) {
   const requiredFields = ['name', 'category', 'categoryLabel', 'price', 'image', 'tagline', 'dealTag']
 
@@ -42,6 +48,7 @@ function validateProductPayload(payload, { partial = false } = {}) {
   return null
 }
 
+// Lista productos y permite filtro opcional por termino de busqueda (?q=...).
 export async function listProducts(_req, res, next) {
   try {
     const searchTerm = String(_req.query?.q || '').trim().toLowerCase()
@@ -59,6 +66,7 @@ export async function listProducts(_req, res, next) {
   }
 }
 
+// Crea un producto nuevo con saneamiento basico de tipos.
 export async function createProduct(req, res, next) {
   try {
     const validationError = validateProductPayload(req.body)
@@ -88,6 +96,7 @@ export async function createProduct(req, res, next) {
   }
 }
 
+// Actualiza solo campos permitidos para evitar sobreescrituras accidentales.
 export async function updateProduct(req, res, next) {
   try {
     const productId = Number(req.params.id)
@@ -154,6 +163,7 @@ export async function updateProduct(req, res, next) {
   }
 }
 
+// Elimina por id y responde 404 cuando el recurso no existe.
 export async function deleteProduct(req, res, next) {
   try {
     const productId = Number(req.params.id)
@@ -173,3 +183,4 @@ export async function deleteProduct(req, res, next) {
     next(error)
   }
 }
+

@@ -1,3 +1,7 @@
+/**
+ * Archivo: BackEnd/src\models\Upload.js
+ * Proposito: Define la logica principal de Upload dentro de TechHub.
+ */
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../config/db.js'
 
@@ -35,3 +39,4 @@ export const Upload = sequelize.define(
     tableName: 'uploads',
   },
 )
+

@@ -1,3 +1,7 @@
+/**
+ * Archivo: BackEnd/src\scripts\initDatabase.js
+ * Proposito: Define la logica principal de initDatabase dentro de TechHub.
+ */
 import dotenv from 'dotenv'
 import mysql from 'mysql2/promise'
 import { sequelize } from '../config/db.js'
@@ -7,6 +11,7 @@ import '../models/Upload.js'
 
 dotenv.config()
 
+// run: coordina este flujo principal del modulo.
 async function run() {
   const host = process.env.DB_HOST ?? 'localhost'
   const port = Number(process.env.DB_PORT ?? 3306)
@@ -46,3 +51,4 @@ async function run() {
 }
 
 run()
+

@@ -7,6 +7,7 @@ import { deleteUpload, listUploads, uploadFile } from '../services/uploadsApi'
 
 const API_ROOT = (import.meta.env.VITE_API_URL ?? 'http://localhost:4000/api').replace(/\/api\/?$/i, '')
 
+// AdminUploads: coordina este flujo principal del modulo.
 export default function AdminUploads() {
   const [uploads, setUploads] = useState([])
   const [loading, setLoading] = useState(true)

@@ -1,3 +1,7 @@
+/**
+ * Archivo: BackEnd/src\data\seedData.js
+ * Proposito: Define la logica principal de seedData dentro de TechHub.
+ */
 export const categories = [
   { id: 'all', label: 'All' },
   { id: 'keyboards', label: 'Teclados' },
@@ -24,3 +28,4 @@ export const products = [
     featured: false, adminOnly: false, tagline: 'Audio espacial y conexion de baja latencia.', dealTag: 'Precio estable',
   },
 ]
+

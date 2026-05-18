@@ -1,3 +1,7 @@
+/**
+ * Archivo: BackEnd/src\controllers\usersController.js
+ * Proposito: Define la logica principal de usersController dentro de TechHub.
+ */
 import bcrypt from 'bcryptjs'
 import { User } from '../models/User.js'
 
@@ -21,6 +25,7 @@ function validateUserPayload(payload, { partial = false } = {}) {
   return null
 }
 
+// listUsers: coordina este flujo principal del modulo.
 export async function listUsers(_req, res, next) {
   try {
     const users = await User.findAll({ attributes: ['id', 'username', 'email', 'role', 'createdAt', 'updatedAt'], order: [['id', 'ASC']] })
@@ -38,6 +43,7 @@ export async function listUsers(_req, res, next) {
   }
 }
 
+// getUser: coordina este flujo principal del modulo.
 export async function getUser(req, res, next) {
   try {
     const userId = Number(req.params.id)
@@ -56,6 +62,7 @@ export async function getUser(req, res, next) {
   }
 }
 
+// createUser: coordina este flujo principal del modulo.
 export async function createUser(req, res, next) {
   try {
     const validationError = validateUserPayload(req.body)
@@ -90,6 +97,7 @@ export async function createUser(req, res, next) {
   }
 }
 
+// updateUser: coordina este flujo principal del modulo.
 export async function updateUser(req, res, next) {
   try {
     const userId = Number(req.params.id)
@@ -135,6 +143,7 @@ export async function updateUser(req, res, next) {
   }
 }
 
+// deleteUser: coordina este flujo principal del modulo.
 export async function deleteUser(req, res, next) {
   try {
     const userId = Number(req.params.id)
@@ -152,3 +161,4 @@ export async function deleteUser(req, res, next) {
     next(error)
   }
 }
+

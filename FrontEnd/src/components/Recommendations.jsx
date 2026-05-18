@@ -1,9 +1,10 @@
 /**
  * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\Recommendations.jsx
- * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ * Proposito: Presenta recomendaciones contextuales para subir conversion del carrito.
  */
 import { formatCOP } from '../utils/currency'
 
+// Lista productos sugeridos y delega acciones al componente padre.
 export default function Recommendations({ products, onAddToCart, onOpenProduct, onCategoryChange }) {
   return (
     <section className="section recommendations" id="recommendations">

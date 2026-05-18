@@ -1,3 +1,7 @@
+/**
+ * Archivo: BackEnd/src\app.js
+ * Proposito: Define la logica principal de app dentro de TechHub.
+ */
 import express from 'express'
 import cors from 'cors'
 import morgan from 'morgan'
@@ -36,3 +40,4 @@ app.use((error, _req, res, _next) => {
 })
 
 export default app
+

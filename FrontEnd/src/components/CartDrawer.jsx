@@ -1,9 +1,10 @@
 /**
  * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\CartDrawer.jsx
- * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ * Proposito: Renderiza el carrito lateral, resumen de compra y sugerencias.
  */
 import { formatCOP } from '../utils/currency'
 
+// Componente controlado: recibe estado/acciones del padre y no persiste datos por si mismo.
 export default function CartDrawer({
   open,
   items,
@@ -16,6 +17,7 @@ export default function CartDrawer({
 }) {
   return (
     <>
+      {/* Backdrop para cerrar el drawer al hacer click fuera */}
       <div
         className={`cart-backdrop ${open ? 'cart-backdrop--open' : ''}`}
         onClick={onClose}
@@ -44,6 +46,7 @@ export default function CartDrawer({
                   <h3>{item.name}</h3>
                   <p>{formatCOP(item.price)} c/u</p>
                   <div className="cart-item__controls">
+                    {/* Ajuste de cantidad por item */}
                     <button type="button" onClick={() => onRemove(item.id)}>
                       -
                     </button>
@@ -64,6 +67,8 @@ export default function CartDrawer({
         </div>
 
         {suggestions?.length ? (
+          <>
+            {/* Sugerencias rapidas derivadas del contenido actual del carrito. */}
           <section className="cart-suggestions" aria-label="Sugeridos en carrito">
             <h3>Sugeridos para complementar</h3>
             <div className="cart-suggestions__list">
@@ -81,6 +86,7 @@ export default function CartDrawer({
               ))}
             </div>
           </section>
+          </>
         ) : null}
 
         <footer className="cart-drawer__footer">

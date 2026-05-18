@@ -1,9 +1,10 @@
 /**
  * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\ProductCard.jsx
- * Proposito: Implementa parte de la logica y flujo principal de TechHub.
+ * Proposito: Renderiza una tarjeta de producto reutilizable en catalogo y ofertas.
  */
 import { formatCOP } from '../utils/currency'
 
+// Muestra precio, descuento y acciones de carrito/detalle.
 export default function ProductCard({
   product,
   highlighted = false,
@@ -11,6 +12,7 @@ export default function ProductCard({
   onOpenProduct,
   quantityInCart = 0,
 }) {
+  // Se considera descuento solo si originalPrice existe y es mayor al precio actual.
   const hasDiscount =
     Number.isFinite(product.originalPrice) && Number(product.originalPrice) > Number(product.price)
 

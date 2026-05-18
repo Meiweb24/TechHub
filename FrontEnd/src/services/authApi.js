@@ -18,6 +18,7 @@ function toApiError(error) {
   return new Error(message)
 }
 
+// login: coordina este flujo principal del modulo.
 export async function login(username, password) {
   try {
     const { data } = await api.post('/auth/login', { username, password })
@@ -27,6 +28,7 @@ export async function login(username, password) {
   }
 }
 
+// registerUser: coordina este flujo principal del modulo.
 export async function registerUser(payload) {
   try {
     const { data } = await api.post('/auth/register', payload)

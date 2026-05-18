@@ -4,6 +4,7 @@
  */
 import { formatCOP } from '../utils/currency'
 
+// DealsSection: coordina este flujo principal del modulo.
 export default function DealsSection({ products, onAddToCart, onCategoryChange }) {
   const topDeals = [...products]
     .filter((item) => Number.isFinite(item.originalPrice) && item.originalPrice > item.price)

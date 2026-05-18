@@ -1,3 +1,7 @@
+/**
+ * Archivo: BackEnd/src\middlewares\validateEmail.js
+ * Proposito: Define la logica principal de validateEmail dentro de TechHub.
+ */
 export function validateEmailInBody(fieldName = 'email') {
   return (req, res, next) => {
     const value = req.body?.[fieldName]
@@ -17,3 +21,4 @@ export function validateEmailInBody(fieldName = 'email') {
     return next()
   }
 }
+

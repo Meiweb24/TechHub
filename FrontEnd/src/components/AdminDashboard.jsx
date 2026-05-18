@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Archivo: C:\Users\jmanu\OneDrive\Desktop\programacion\TechHub\FrontEnd\src\components\AdminDashboard.jsx
  * Proposito: Implementa parte de la logica y flujo principal de TechHub.
  */
@@ -8,6 +8,7 @@ import AdminProductTable from './AdminProductTable'
 import AdminUserTable from './AdminUserTable'
 import AdminUploads from './AdminUploads'
 
+// AdminDashboard: coordina este flujo principal del modulo.
 export default function AdminDashboard() {
   const { logout } = useAuth()
 

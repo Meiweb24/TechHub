@@ -22,21 +22,26 @@ import { ProductProvider, useProducts } from './context/ProductContext'
 import { categories } from './data/products'
 import './App.css'
 
+// Storefront: orquesta la experiencia de tienda (filtros, carrito, listados y vistas para admin/visitante).
 function Storefront() {
   const { isAdmin } = useAuth()
   const { products, loading: productsLoading } = useProducts()
+  // Estado de filtros y UI.
   const [activeCategory, setActiveCategory] = useState('all')
   const [searchTerm, setSearchTerm] = useState('')
   const [mobileOpen, setMobileOpen] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
+  // Estado del carrito persistido por tipo de usuario.
   const [cartItems, setCartItems] = useState([])
   const [cartLoaded, setCartLoaded] = useState(false)
   const [sortOption, setSortOption] = useState('featured')
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [mobileColumns, setMobileColumns] = useState(2)
+  // Clave separada: evita mezclar carrito admin con carrito visitante.
   const cartStorageKey = isAdmin ? 'techhub_cart_admin' : 'techhub_cart_guest'
 
   useEffect(() => {
+    // Hidrata filtros iniciales desde query params/hash.
     const validCategoryIds = new Set(categories.map((category) => category.id))
     const params = new URLSearchParams(window.location.search)
     const categoryFromUrl = params.get('category')
@@ -64,6 +69,7 @@ function Storefront() {
   }, [])
 
   useEffect(() => {
+    // Carga carrito persistido.
     try {
       const saved = window.localStorage.getItem(cartStorageKey)
       if (!saved) {
@@ -86,14 +92,17 @@ function Storefront() {
   }, [cartStorageKey])
 
   useEffect(() => {
+    // Persiste carrito solo despues de la carga inicial para no sobrescribir datos previos.
     if (!cartLoaded) {
       return
     }
     window.localStorage.setItem(cartStorageKey, JSON.stringify(cartItems))
   }, [cartItems, cartLoaded, cartStorageKey])
 
+  // Visitantes no ven productos marcados como adminOnly.
   const allowedProducts = products.filter((item) => (isAdmin ? true : !item.adminOnly))
 
+  // Filtrado por categoria + busqueda textual.
   const filteredProducts = allowedProducts.filter((item) => {
     const passCategory = activeCategory === 'all' || item.category === activeCategory
     const passSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase().trim())
@@ -101,6 +110,7 @@ function Storefront() {
     return passCategory && passSearch
   })
 
+  // Ordenamiento configurable desde la UI de catalogo.
   const visibleProducts = [...filteredProducts].sort((first, second) => {
     if (sortOption === 'az') {
       return first.name.localeCompare(second.name, 'es-CO')
@@ -140,10 +150,12 @@ function Storefront() {
     return first.name.localeCompare(second.name, 'es-CO')
   })
 
+  // Bloques derivados para secciones del home.
   const featuredProducts = filteredProducts.filter((item) => item.featured).slice(0, 4)
   const adminProducts = products.filter((item) => item.adminOnly)
 
   const addToCart = (productId) => {
+    // Proteccion: no permitir agregar ids fuera del conjunto visible/autorizado.
     const exists = allowedProducts.some((item) => item.id === productId)
 
     if (!exists) {
@@ -193,6 +205,7 @@ function Storefront() {
     })
     .filter(Boolean)
 
+  // Metricas resumidas del carrito para navbar y drawer.
   const cartCount = cartDetailItems.reduce((total, item) => total + item.quantity, 0)
   const cartSubtotal = cartDetailItems.reduce((total, item) => total + item.price * item.quantity, 0)
 
@@ -203,6 +216,7 @@ function Storefront() {
 
   const cartIdSet = new Set(cartDetailItems.map((item) => item.id))
 
+  // Recomendador simple: prioriza misma categoria del carrito y productos destacados.
   const cartSuggestions = [...allowedProducts]
     .filter((item) => !cartIdSet.has(item.id))
     .sort((first, second) => {
@@ -345,6 +359,7 @@ function Storefront() {
   )
 }
 
+// Router SPA liviano sin dependencia externa (intercepta enlaces internos y popstate).
 function AppRouter() {
   const { isAdmin } = useAuth()
   const [path, setPath] = useState(window.location.pathname)
@@ -379,6 +394,7 @@ function AppRouter() {
   }, [])
 
   useEffect(() => {
+    // Intercepta clicks en anchors internos para navegar sin recarga completa.
     const intercept = (event) => {
       const anchor = event.target.closest('a[href^="/"]')
       if (!anchor) {

@@ -12,7 +12,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [authError, setAuthError] = useState('')
 
-  // Al iniciar la app, restaurar sesión desde localStorage si existe.
+  // Al iniciar la app, restaurar sesiÃ³n desde localStorage si existe.
   useEffect(() => {
     const saved = window.localStorage.getItem(AUTH_STORAGE_KEY)
     if (saved) {
